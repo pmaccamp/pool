@@ -96,6 +96,7 @@ extern int g_socket_recv_timeout;
 
 extern bool g_debuglog_client;
 extern bool g_debuglog_hash;
+extern bool g_debuglog_hash_verbose;
 extern bool g_debuglog_socket;
 extern bool g_debuglog_rpc;
 extern bool g_debuglog_list;

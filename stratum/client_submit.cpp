@@ -290,7 +290,7 @@ static void client_do_submit(YAAMP_CLIENT *client, YAAMP_JOB *job, YAAMP_JOB_VAL
 				block_confirm(coind->id, submitvalues->hash_be);
 			}
 
-			if (g_debuglog_hash) {
+			if (g_debuglog_hash_verbose) {
 				debuglog("--------------------------------------------------------------\n");
 				debuglog("hash1 %s\n", hash1);
 				debuglog("hash2 %s\n", submitvalues->hash_be);
@@ -400,7 +400,7 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 		}
 	}
 
-	if (g_debuglog_hash) {
+	if (g_debuglog_hash_verbose) {
 		debuglog("submit %s (uid %d) %d, %s, t=%s, n=%s, extra=%s\n", client->sock->ip, client->userid,
 			jobid, extranonce2, ntime, nonce, extra);
 	}
@@ -514,7 +514,7 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 	uint64_t coin_target = decode_compact(templ->nbits);
 	if (templ->nbits && !coin_target) coin_target = 0xFFFF000000000000ULL;
 
-	if (g_debuglog_hash) {
+	if (g_debuglog_hash_verbose) {
 		debuglog("%016llx actual\n", hash_int);
 		debuglog("%016llx target\n", user_target);
 		debuglog("%016llx coin\n", coin_target);
@@ -544,7 +544,7 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 //		share_diff = share_diff / g_current_algo->diff_multiplier;
 //	}
 
-	if (g_debuglog_hash) {
+	if (g_debuglog_hash_verbose) {
 		// only log a few...
 		if (share_diff > (client->difficulty_actual * 16))
 			debuglog("submit %s (uid %d) %d, %s, %s, %s, %.3f/%.3f\n", client->sock->ip, client->userid,

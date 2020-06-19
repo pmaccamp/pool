@@ -46,6 +46,7 @@ int g_socket_recv_timeout = 600;
 
 bool g_debuglog_client;
 bool g_debuglog_hash;
+bool g_debuglog_hash_verbose;
 bool g_debuglog_socket;
 bool g_debuglog_rpc;
 bool g_debuglog_list;
@@ -283,6 +284,7 @@ int main(int argc, char **argv)
 
 	g_debuglog_client = iniparser_getint(ini, "DEBUGLOG:client", false);
 	g_debuglog_hash = iniparser_getint(ini, "DEBUGLOG:hash", false);
+	g_debuglog_hash_verbose = iniparser_getint(ini, "DEBUGLOG:hash_verbose", false);
 	g_debuglog_socket = iniparser_getint(ini, "DEBUGLOG:socket", false);
 	g_debuglog_rpc = iniparser_getint(ini, "DEBUGLOG:rpc", false);
 	g_debuglog_list = iniparser_getint(ini, "DEBUGLOG:list", false);
