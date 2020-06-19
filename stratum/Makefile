@@ -61,6 +61,5 @@ clean:
 
 install: clean all
 	strip -s stratum
-	cp stratum /usr/local/bin/
-	cp stratum ../bin/
+	cp stratum /home/crypto-data/yiimp/site/stratum/
 
