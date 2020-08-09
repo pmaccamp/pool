@@ -258,7 +258,8 @@ void job_signal()
 
 void job_update()
 {
-//	debuglog("job_update()\n");
+	debuglog("job_update()\n");
+
 	job_reset_clients();
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,6 +269,7 @@ void job_update()
 
 	for(CLI li = g_list_job.first; li; li = li->next)
 	{
+        debuglog("clients with no job\n");
 		YAAMP_JOB *job = (YAAMP_JOB *)li->data;
 		if(!job_can_mine(job)) continue;
 
