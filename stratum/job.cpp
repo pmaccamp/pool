@@ -277,29 +277,21 @@ void job_update()
 
 		if(!job_has_free_client()) break;
 	}
-    debuglog("job unlock clients\n");
 
 	job_unlock_clients();
 	g_list_job.Leave();
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	g_list_coind.Enter();
-    debuglog("coin sort\n");
 	coind_sort();
-
-    debuglog("assign\n");
 
 	job_assign_clients_left(1);
 	job_assign_clients_left(1);
 	job_assign_clients_left(-1);
 
-    debuglog("assign done\n");
-
 	g_list_coind.Leave();
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
-
-    debuglog("client list enter \n");
 
 	g_list_client.Enter();
 	for(CLI li = g_list_client.first; li; li = li->next)
@@ -326,7 +318,6 @@ void job_update()
 	}
 
 	g_list_client.Leave();
-    debuglog("client list leave \n");
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -334,7 +325,6 @@ void job_update()
 
 //	int ready = 0;
 //	debuglog("job_update\n");
-    debuglog("job list \n");
 
 	g_list_job.Enter();
 	for(CLI li = g_list_job.first; li; li = li->next)
@@ -348,7 +338,6 @@ void job_update()
 
 //	debuglog("job_update %d / %d jobs\n", ready, g_list_job.count);
 	g_list_job.Leave();
-    debuglog("job list leave \n");
 
 }
 

@@ -3,6 +3,8 @@
 
 void job_sort()
 {
+    debuglog("job sort start()\n");
+
 	for(CLI li = g_list_job.first; li && li->next; li = li->next)
 	{
 		YAAMP_JOB *job1 = (YAAMP_JOB *)li->data;
@@ -13,9 +15,13 @@ void job_sort()
 			g_list_job.Swap(li, li->next);
 			job_sort();
 
+            debuglog("job sort finish return()\n");
+
 			return;
 		}
 	}
+
+    debuglog("job sort finish ()\n");
 }
 
 bool job_has_free_client()
@@ -39,6 +45,7 @@ bool job_has_free_client()
 
 void job_reset_clients(YAAMP_JOB *job)
 {
+	debuglog("start reset client()\n");
 	g_list_client.Enter();
 	for(CLI li = g_list_client.first; li; li = li->next)
 	{
@@ -48,7 +55,7 @@ void job_reset_clients(YAAMP_JOB *job)
 		if(!job || job->id == client->jobid_next)
 			client->jobid_next = 0;
 	}
-
+	debuglog("end reset client()\n");
 	g_list_client.Leave();
 }
 
