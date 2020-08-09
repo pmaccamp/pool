@@ -517,8 +517,6 @@ bool client_auth_by_workers(YAAMP_CLIENT *client)
 
 void *client_thread(void *p)
 {
-    stratumlogdate("client thread \n");
-
 	YAAMP_CLIENT *client = new YAAMP_CLIENT;
 	if(!client) {
 		stratumlog("client_thread OOM");
@@ -526,7 +524,6 @@ void *client_thread(void *p)
 		return NULL;
 	}
 	memset(client, 0, sizeof(YAAMP_CLIENT));
-    stratumlogdate("client thread memset \n");
 
 	client->reconnectable = true;
 	client->speed = 1;
