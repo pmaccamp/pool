@@ -539,14 +539,10 @@ void *client_thread(void *p)
 	client->shares_per_minute = YAAMP_SHAREPERSEC;
 	client->last_submit_time = current_timestamp();
 
-    stratumlogdate("client sets \n");
-
 //	usleep(g_list_client.count * 5000);
 
 	while(!g_exiting)
 	{
-	    stratumlogdate("client loop \n");
-
 		if(client->submit_bad > 1024)
 		{
 			clientlog(client, "bad submits");
