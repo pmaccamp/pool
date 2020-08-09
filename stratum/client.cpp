@@ -517,6 +517,8 @@ bool client_auth_by_workers(YAAMP_CLIENT *client)
 
 void *client_thread(void *p)
 {
+    stratumlogdate("client thread \n");
+
 	YAAMP_CLIENT *client = new YAAMP_CLIENT;
 	if(!client) {
 		stratumlog("client_thread OOM");
@@ -524,6 +526,7 @@ void *client_thread(void *p)
 		return NULL;
 	}
 	memset(client, 0, sizeof(YAAMP_CLIENT));
+    stratumlogdate("client thread memset \n");
 
 	client->reconnectable = true;
 	client->speed = 1;
@@ -536,10 +539,14 @@ void *client_thread(void *p)
 	client->shares_per_minute = YAAMP_SHAREPERSEC;
 	client->last_submit_time = current_timestamp();
 
+    stratumlogdate("client sets \n");
+
 //	usleep(g_list_client.count * 5000);
 
 	while(!g_exiting)
 	{
+	    stratumlogdate("client loop \n");
+
 		if(client->submit_bad > 1024)
 		{
 			clientlog(client, "bad submits");
