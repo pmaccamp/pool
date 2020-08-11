@@ -181,7 +181,7 @@ void share_prune(YAAMP_DB *db)
 void block_prune(YAAMP_DB *db)
 {
 	int count = 0;
-	char buffer[128*1024] = "insert into blocks (height, blockhash, coin_id, userid, workerid, category, difficulty, difficulty_user, time, algo, segwit) values ";
+	char buffer[128*1024] = "insert into blocks (height, blockhash, coin_id, userid, workerid, category, difficulty, difficulty_user, time, algo, segwit, luck) values ";
 
 	g_list_block.Enter();
 	for(CLI li = g_list_block.first; li; li = li->next)
@@ -199,10 +199,33 @@ void block_prune(YAAMP_DB *db)
 			continue;
 		}
 
+		int time = 0;
+
+		// get time of last found block
+		db_query(db, "SELECT time FROM blocks order by id desc");
+		MYSQL_RES *result = mysql_store_result(&db->mysql);
+		MYSQL_ROW row = mysql_fetch_row(result);
+		if (row) {
+			time = row[0];
+		}
+		mysql_free_result(result);
+
+		// get share work sum since that time
+		double luck = 0;
+
+		db_query(db, "SELECT sum(work) FROM shares where time > %d", time);
+		result = mysql_store_result(&db->mysql);
+		row = mysql_fetch_row(result);
+		if (row) {
+			luck = row[0];
+		}
+		mysql_free_result(result);
+
+
 		if(count) strcat(buffer, ",");
-		sprintf(buffer+strlen(buffer), "(%d, '%s', %d, %d, %d, 'new', %f, %f, %d, '%s', %d)",
+		sprintf(buffer+strlen(buffer), "(%d, '%s', %d, %d, %d, 'new', %f, %f, %d, '%s', %d, %f)",
 			block->height, block->hash, block->coinid, block->userid, block->workerid,
-			block->difficulty, block->difficulty_user, (int)block->created, g_stratum_algo, block->segwit?1:0);
+			block->difficulty, block->difficulty_user, (int)block->created, g_stratum_algo, block->segwit?1:0, luck);
 
 		object_delete(block);
 		count++;
