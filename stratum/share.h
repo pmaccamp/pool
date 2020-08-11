@@ -14,6 +14,7 @@ public:
 	uint32_t ntime;
 	double difficulty;
 	double share_diff; /* submitted hash diff */
+	double target_diff; /* current block diff */
 };
 
 inline void worker_delete(YAAMP_OBJECT *object)

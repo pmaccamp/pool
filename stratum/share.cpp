@@ -54,6 +54,7 @@ static void share_add_worker(YAAMP_CLIENT *client, YAAMP_JOB *job, bool valid, c
 		worker->error_number = error_number;
 		sscanf(ntime, "%x", &worker->ntime);
 		worker->share_diff = share_diff;
+		worker->target_diff = client->target_diff;
 
 		if(g_stratum_reconnect)
 			worker->extranonce1 = !client->reconnecting && (client->reconnectable || client->extranonce_subscribe);
@@ -120,7 +121,7 @@ void share_write(YAAMP_DB *db)
 	int count = 0;
 	int now = time(NULL);
 
-	char buffer[1024*1024] = "insert into shares (userid, workerid, coinid, jobid, pid, valid, extranonce1, difficulty, share_diff, time, algo, error) values ";
+	char buffer[1024*1024] = "insert into shares (userid, workerid, coinid, jobid, pid, valid, extranonce1, difficulty, share_diff, time, algo, error, work) values ";
 	g_list_worker.Enter();
 
 	for(CLI li = g_list_worker.first; li; li = li->next)
@@ -134,9 +135,9 @@ void share_write(YAAMP_DB *db)
 		}
 
 		if(count) strcat(buffer, ",");
-		sprintf(buffer+strlen(buffer), "(%d, %d, %d, %d, %d, %d, %d, %f, %f, %d, '%s', %d)",
+		sprintf(buffer+strlen(buffer), "(%d, %d, %d, %d, %d, %d, %d, %f, %f, %d, '%s', %d, %f)",
 			worker->userid, worker->workerid, worker->coinid, worker->remoteid, pid,
-			worker->valid, worker->extranonce1, worker->difficulty, worker->share_diff, now, g_stratum_algo, worker->error_number);
+			worker->valid, worker->extranonce1, worker->difficulty, worker->share_diff, now, g_stratum_algo, worker->error_number, worker->difficulty / worker->target_diff);
 
 		// todo: link max_ttf ?
 		if((now - worker->ntime) > 15*60 || worker->ntime > now) {

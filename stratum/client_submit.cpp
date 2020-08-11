@@ -412,6 +412,9 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 		return true;
 	}
 
+	// update client with latest difficulty
+	client->target_diff = job->coind->difficulty;
+
 	if(job->deleted)
 	{
 		client_send_result(client, "true");
