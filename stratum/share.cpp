@@ -206,7 +206,7 @@ void block_prune(YAAMP_DB *db)
 		MYSQL_RES *result = mysql_store_result(&db->mysql);
 		MYSQL_ROW row = mysql_fetch_row(result);
 		if (row) {
-			time = row[0];
+			time = atoi(row[0]);
 		}
 		mysql_free_result(result);
 
@@ -217,7 +217,7 @@ void block_prune(YAAMP_DB *db)
 		result = mysql_store_result(&db->mysql);
 		row = mysql_fetch_row(result);
 		if (row) {
-			luck = row[0];
+			luck = atoi(row[0]);
 		}
 		mysql_free_result(result);
 
