@@ -217,7 +217,7 @@ void block_prune(YAAMP_DB *db)
 		result = mysql_store_result(&db->mysql);
 		row = mysql_fetch_row(result);
 		if (row) {
-			luck = atoi(row[0]);
+			luck = atof(row[0]);
 		}
 		mysql_free_result(result);
 
