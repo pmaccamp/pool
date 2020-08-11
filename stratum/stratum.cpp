@@ -272,6 +272,9 @@ int main(int argc, char **argv)
 	g_stratum_min_diff = iniparser_getdouble(ini, "STRATUM:diff_min", g_stratum_difficulty/2);
 	g_stratum_max_diff = iniparser_getdouble(ini, "STRATUM:diff_max", g_stratum_difficulty*8192);
 
+    stratumlogdate("stratum diff %d, min diff %d, max diff %d", g_stratum_difficulty, g_stratum_min_diff, g_stratum_max_diff);
+
+
 	g_stratum_max_cons = iniparser_getint(ini, "STRATUM:max_cons", 5000);
 	g_stratum_max_ttf = iniparser_getint(ini, "STRATUM:max_ttf", 0x70000000);
 	g_stratum_reconnect = iniparser_getint(ini, "STRATUM:reconnect", true);
