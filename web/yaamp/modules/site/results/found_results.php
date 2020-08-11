@@ -50,6 +50,7 @@ td.right { text-align: right; }
 <th align="right">Block</th>
 <th align="right">Time</th>
 <th align="right">Status</th>
+<th align="right">Luck</th>
 </tr>
 </thead>
 EOT;
@@ -114,7 +115,11 @@ foreach($db_blocks as $db_block)
 	else if($db_block->category == 'new')
 		echo '<span class="block new">New</span>';
 
-	echo "</td>";
+    $luck = $db_block->luck * 100;
+
+    echo "</td>";
+    echo '<td class="row right">'.$luck.'</td>';
+
 	echo "</tr>";
 }
 
