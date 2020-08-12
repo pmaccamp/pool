@@ -12,7 +12,7 @@ define('YAAMP_DBUSER', 'root');
 define('YAAMP_DBPASSWORD', 'password');
 
 define('YAAMP_PRODUCTION', true);
-define('YAAMP_RENTAL', false);
+define('YAAMP_RENTAL', true);
 define('YAAMP_LIMIT_ESTIMATE', false);
 
 define('YAAMP_FEES_MINING', 0.5);
@@ -36,11 +36,9 @@ define('YAAMP_SITE_NAME', 'YiiMP');
 define('YAAMP_ADMIN_EMAIL', 'yiimp@spam.la');
 define('YAAMP_ADMIN_IP', ''); // samples: "80.236.118.26,90.234.221.11" or "10.0.0.1/8"
 define('YAAMP_ADMIN_WEBCONSOLE', true);
-<<<<<<< HEAD
-define('YAAMP_NOTIFY_NEW_COINS', true);
-define('YAAMP_DEFAULT_ALGO', 'lbry');
-define('YAAMP_CREATE_NEW_COINS', false);
-
+define('YAAMP_CREATE_NEW_COINS', true);
+define('YAAMP_NOTIFY_NEW_COINS', false);
+define('YAAMP_DEFAULT_ALGO', 'x11');
 
 define('YAAMP_USE_NGINX', false);
 
@@ -56,6 +54,7 @@ define('EXCH_CEXIO_KEY', '');
 define('EXCH_COINMARKETS_USER', '');
 define('EXCH_COINMARKETS_PIN', '');
 define('EXCH_CREX24_KEY', '');
+define('EXCH_CRYPTOBRIDGE_ID', '');
 define('EXCH_BINANCE_KEY', '');
 define('EXCH_BITSTAMP_ID','');
 define('EXCH_BITSTAMP_KEY','');

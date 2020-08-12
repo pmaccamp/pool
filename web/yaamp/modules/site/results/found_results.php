@@ -114,18 +114,17 @@ foreach($db_blocks as $db_block)
 
 	else if($db_block->category == 'new')
 		echo '<span class="block new">New</span>';
+	$luck = $db_block->luck * 100;
 
-    $luck = $db_block->luck * 100;
-
-    echo "</td>";
-    echo '<td class="row right">'.$luck.'</td>';
-
+	echo "</td>";
+        echo '<td class="row right">'.$luck.'</td>';
 	echo "</tr>";
 }
 
 echo "</table>";
 
 echo "<br></div></div><br>";
+
 
 
 
