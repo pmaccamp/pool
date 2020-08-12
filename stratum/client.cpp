@@ -310,7 +310,7 @@ bool client_update_block(YAAMP_CLIENT *client, json_value *json_params)
 
 	const char* hash = json_params->u.array.values[2]->u.string.ptr;
 
-	stratumlogdate("notify: new %s block %s\n", coind->symbol, hash);
+	debuglog("notify: new %s block %s\n", coind->symbol, hash);
 
 	snprintf(coind->lastnotifyhash, 161, "%s", hash);
 
