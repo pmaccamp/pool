@@ -202,7 +202,7 @@ void block_prune(YAAMP_DB *db)
 		int time = 0;
 
 		// get time of last found block
-		db_query(db, "SELECT time FROM blocks order by id desc");
+		db_query(db, "SELECT time FROM blocks order by id desc limit 1");
 		MYSQL_RES *result = mysql_store_result(&db->mysql);
 		MYSQL_ROW row = mysql_fetch_row(result);
 		if (row) {

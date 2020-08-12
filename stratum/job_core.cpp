@@ -40,6 +40,8 @@ bool job_has_free_client()
 void job_reset_clients(YAAMP_JOB *job)
 {
 	g_list_client.Enter();
+	debuglog("reseting clients for job %d\n", job->id);
+
 	for(CLI li = g_list_client.first; li; li = li->next)
 	{
 		YAAMP_CLIENT *client = (YAAMP_CLIENT *)li->data;

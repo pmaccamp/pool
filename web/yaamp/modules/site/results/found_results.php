@@ -14,7 +14,22 @@ $algo = user()->getState('yaamp-algo');
 $count = getparam('count');
 $count = $count? $count: 50;
 
-WriteBoxHeader("Last $count Blocks ($algo)");
+//calc current work done
+//find time of last block found
+$criteria = new CDbCriteria();
+$criteria->limit = 1;
+$criteria->order = 't.time DESC';
+$db_blocks = getdbolist('db_blocks', $criteria);
+$time = $db_blocks[0]->time;
+
+// sum work done since that block
+$work = round(dboscalar("SELECT SUM(work) FROM shares WHERE time>={$time}"), 3);
+
+$avg5 = round(dboscalar("SELECT AVG(luck) FROM (select luck from blocks order by id desc limit 5) as luck;"), 2);
+
+$avg10 = round(dboscalar("SELECT AVG(luck) FROM (select luck from blocks order by id desc limit 10) as luck;"), 2);
+
+WriteBoxHeader("Last $count Blocks ($algo)<br/> Current Work: $work <br/>Last 5 Avg: $avg5<br/> Last 10 Avg: $avg10");
 
 $criteria = new CDbCriteria();
 $criteria->condition = "t.category NOT IN ('stake','generated')";
