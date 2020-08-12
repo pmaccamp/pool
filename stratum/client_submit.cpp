@@ -408,7 +408,7 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 	YAAMP_JOB *job = (YAAMP_JOB *)object_find(&g_list_job, jobid, true);
 	if(!job)
 	{
-        debuglog("Invalid job id %d from client %d \n", jobid, client->userid);
+		stratumlogdate("Invalid job id %d from client %d \n", jobid, client->userid);
 
 		client_submit_error(client, NULL, 21, "Invalid job id", extranonce2, ntime, nonce);
 		return true;
