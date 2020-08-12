@@ -544,7 +544,7 @@ bool client_submit(YAAMP_CLIENT *client, json_value *json_params)
 		if (!client_ask_stats(client)) client->stats = false;
 	}
 
-	double share_diff = diff_Eto_target(hash_int);
+	double share_diff = diff_to_target(hash_int);
 //	if (g_current_algo->diff_multiplier != 0) {
 //		share_diff = share_diff / g_current_algo->diff_multiplier;
 //	}
