@@ -11,8 +11,6 @@ if (!defined('YAAMP_DBNAME')) define('YAAMP_DBNAME', 'yaamp');
 if (!defined('YAAMP_DBUSER')) define('YAAMP_DBUSER', 'root');
 if (!defined('YAAMP_DBPASSWORD')) define('YAAMP_DBPASSWORD', '');
 
-if (!defined('YIIMP_MYSQLDUMP_PATH')) define('YIIMP_MYSQLDUMP_PATH', '/root/backup');
-
 if (!defined('YIIMP_PUBLIC_EXPLORER')) define('YIIMP_PUBLIC_EXPLORER', true);
 if (!defined('YIIMP_PUBLIC_BENCHMARK')) define('YIIMP_PUBLIC_BENCHMARK', false);
 if (!defined('YIIMP_FIAT_ALTERNATIVE')) define('YIIMP_FIAT_ALTERNATIVE', 'EUR');
@@ -37,6 +35,7 @@ if (!defined('EXCH_CCEX_KEY')) define('EXCH_CCEX_KEY', '');
 if (!defined('EXCH_CEXIO_ID')) define('EXCH_CEXIO_ID', '');
 if (!defined('EXCH_CEXIO_KEY')) define('EXCH_CEXIO_KEY', '');
 if (!defined('EXCH_CREX24_KEY')) define('EXCH_CREX24_KEY', '');
+if (!defined('EXCH_CRYPTOBRIDGE_ID')) define('EXCH_CRYPTOBRIDGE_ID', '');
 if (!defined('EXCH_CRYPTOPIA_KEY')) define('EXCH_CRYPTOPIA_KEY', '');
 if (!defined('EXCH_HITBTC_KEY')) define('EXCH_HITBTC_KEY', '');
 if (!defined('EXCH_POLONIEX_KEY')) define('EXCH_POLONIEX_KEY', '');

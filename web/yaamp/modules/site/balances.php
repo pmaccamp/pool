@@ -1,5 +1,4 @@
 <?php
-
 $exch = getparam('exch');
 echo getAdminSideBarLinks();
 
@@ -11,7 +10,7 @@ p.notes { opacity: 0.7; }
 </style>
 <div id="main_results"></div>
 
-<p class="notes">This table show all non-zero balances tracked by Lbry Community Pool. It also allow manual API calls to manually check the exchange API reliability</p>
+<p class="notes">This table show all non-zero balances tracked by yiimp. It also allow manual API calls to manually check the exchange API reliability</p>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -35,7 +34,7 @@ function main_error()
 
 function main_refresh()
 {
-	var url = '/site/balances_results?exch=<?php echo $exch;?>';
+	var url = '/site/balances_results?exch=<?php echo $exch; ?>';
 	clearTimeout(main_timeout);
 	$.get(url, '', main_ready).error(main_error);
 }
@@ -43,5 +42,6 @@ function main_refresh()
 </script>
 
 <?php
-
-app()->clientScript->registerScript('init', 'main_refresh();', CClientScript::POS_READY);
+app()
+    ->clientScript
+    ->registerScript('init', 'main_refresh();', CClientScript::POS_READY);
