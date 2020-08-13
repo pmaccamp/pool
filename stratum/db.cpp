@@ -349,7 +349,7 @@ void db_update_coinds(YAAMP_DB *db)
 			usleep(100*YAAMP_MS);
 
 			coind_create_job(coind);
-		} else if (!coind->job || coind->job->templ){
+		} else if (!coind->job || !coind->job->templ){
 			coind_create_job(coind);
 		}
 		coind->touch = true;
