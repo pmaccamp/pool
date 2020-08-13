@@ -346,7 +346,7 @@ int main(int argc, char **argv)
 	pthread_t thread2;
 	pthread_create(&thread2, NULL, stratum_thread, NULL);
 
-	sleep(YAAMP_JOB_UPDATE_FREQ);
+	sleep(20);
 
 	while(!g_exiting)
 	{
