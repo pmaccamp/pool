@@ -346,7 +346,7 @@ int main(int argc, char **argv)
 	pthread_t thread2;
 	pthread_create(&thread2, NULL, stratum_thread, NULL);
 
-	sleep(20);
+	sleep(YAAMP_JOB_UPDATE_FREQ);
 
 	while(!g_exiting)
 	{
@@ -383,7 +383,7 @@ int main(int argc, char **argv)
 		object_prune(&g_list_share, share_delete);
 		object_prune(&g_list_submit, submit_delete);
 
-		if (!g_exiting) sleep(20);
+		if (!g_exiting) sleep(YAAMP_JOB_UPDATE_FREQ);
 	}
 
 	stratumlog("closing database...\n");
