@@ -349,6 +349,7 @@ void db_update_coinds(YAAMP_DB *db)
 			usleep(100*YAAMP_MS);
 		}
 		coind->touch = true;
+		coind_create_job(coind);
 	}
 
 	mysql_free_result(result);
