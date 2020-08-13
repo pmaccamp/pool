@@ -347,10 +347,6 @@ void db_update_coinds(YAAMP_DB *db)
 
 			g_list_coind.AddTail(coind);
 			usleep(100*YAAMP_MS);
-
-			coind_create_job(coind);
-		} else if (!coind->job || !coind->job->templ){
-			coind_create_job(coind);
 		}
 		coind->touch = true;
 	}

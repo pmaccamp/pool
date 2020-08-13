@@ -34,7 +34,7 @@ using namespace std;
 #define YAAMP_MAXJOBDELAY		(2*60)
 #define CURL_RPC_TIMEOUT		(30)
 
-#define YAAMP_JOB_UPDATE_FREQ	20
+#define YAAMP_JOB_UPDATE_FREQ	25
 
 #define YAAMP_MS				1000
 #define YAAMP_SEC				1000000
