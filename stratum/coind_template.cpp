@@ -589,6 +589,8 @@ bool coind_create_job(YAAMP_COIND *coind, bool force)
 	coind->job->coind = coind;
 	coind->job->remote = NULL;
 
+	debuglog("adding job %d\n", coind->job->id);
+
 	g_list_job.AddTail(coind->job);
 	CommonUnlock(&coind->mutex);
 
