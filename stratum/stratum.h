@@ -31,10 +31,10 @@ using namespace std;
 #include "util.h"
 
 #define YAAMP_RESTARTDELAY		(24*60*60)
-#define YAAMP_MAXJOBDELAY		(5*60)
+#define YAAMP_MAXJOBDELAY		(3*60)
 #define CURL_RPC_TIMEOUT		(30)
 
-#define YAAMP_JOB_UPDATE_FREQ	90
+#define YAAMP_JOB_UPDATE_FREQ	45
 
 #define YAAMP_MS				1000
 #define YAAMP_SEC				1000000
